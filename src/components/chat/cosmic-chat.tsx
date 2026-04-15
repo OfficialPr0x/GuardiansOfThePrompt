@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import Image from "next/image";
 import { X, Send } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 // Smoke reveal: each character materializes from cosmic blur
-const smokeVariants = {
+const smokeVariants: Variants = {
   hidden: { opacity: 0, filter: "blur(5px)", y: 3 },
   visible: (i: number) => ({
     opacity: 1,
