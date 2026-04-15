@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      width: 380px;
+      min-height: 420px;
+      background: #0f0f1e;
+      color: #e2e0ff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a1a3e, #2a1a4e);
+      padding: 24px 20px 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(108, 92, 231, 0.15);
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .logo-wrap svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    .brand-name {
+      font-size: 18px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #a855f7, #6C5CE7, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.5px;
+    }
+
+    .tagline {
+      font-size: 12px;
+      color: #7c7c9a;
+      margin-top: 4px;
+    }
+
+    .section {
+      padding: 20px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #7c7c9a;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .api-key-group {
+      position: relative;
+    }
+
+    .api-input {
+      width: 100%;
+      padding: 12px 44px 12px 14px;
+      border: 1.5px solid rgba(108, 92, 231, 0.2);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+      color: #e2e0ff;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    .api-input:focus {
+      border-color: rgba(108, 92, 231, 0.5);
+      box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+    }
+
+    .toggle-visibility {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #7c7c9a;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 4px;
+    }
+
+    .toggle-visibility:hover {
+      color: #e2e0ff;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6C5CE7, #a855f7);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(108, 92, 231, 0.5);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      color: #a0a0c0;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      color: #e2e0ff;
+    }
+
+    .status {
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status.success {
+      display: flex;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      color: #4ade80;
+    }
+
+    .status.error {
+      display: flex;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      color: #f87171;
+    }
+
+    .divider {
+      height: 1px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 22px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #a855f7, #6C5CE7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: #7c7c9a;
+      margin-top: 2px;
+    }
+
+    /* Persona count */
+    .persona-info {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .persona-info-text {
+      font-size: 13px;
+      color: #a0a0c0;
+    }
+
+    .persona-count {
+      font-weight: 700;
+      color: #a855f7;
+    }
+
+    .btn-reset {
+      padding: 6px 12px;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 8px;
+      background: rgba(239, 68, 68, 0.06);
+      color: #f87171;
+      font-size: 11px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .btn-reset:hover {
+      background: rgba(239, 68, 68, 0.12);
+    }
+
+    .footer {
+      padding: 16px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer-text {
+      font-size: 11px;
+      color: #4a4a6a;
+    }
+
+    .footer-link {
+      color: #a855f7;
+      text-decoration: none;
+    }
+
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo-wrap">
+      <svg viewBox="0 0 32 32" fill="none">
+        <path d="M16 4L25 8.5V16C25 21.5 21 26 16 28C11 26 7 21.5 7 16V8.5L16 4Z" fill="rgba(168,85,247,0.2)" stroke="#a855f7" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M17.5 10L13 17L16 17L14.5 23L20 15L17 15Z" fill="#fbbf24" stroke="#f59e0b" stroke-width="0.5" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-name">Guardians of the Prompt</span>
+    </div>
+    <div class="tagline">Transform any text into God-tier quality</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">DeepSeek API Key</div>
+    <div class="api-key-group">
+      <input type="password" class="api-input" id="apiKeyInput" placeholder="sk-xxxxxxxxxxxxxxxxxxxxxxxx" spellcheck="false" autocomplete="off" />
+      <button class="toggle-visibility" id="toggleVisibility">👁️</button>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="saveBtn">Save Key</button>
+      <button class="btn btn-secondary" id="validateBtn">Validate</button>
+    </div>
+    <div class="status" id="status"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-title">Your Personas</div>
+    <div class="persona-info">
+      <span class="persona-info-text">
+        <span class="persona-count" id="builtinCount">10</span> built-in &nbsp;·&nbsp; 
+        <span class="persona-count" id="customCount">0</span> custom
+      </span>
+      <button class="btn-reset" id="resetBtn" title="Delete all custom personas">Reset Custom</button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-title">How to Use</div>
+    <div style="font-size: 12px; color: #7c7c9a; line-height: 1.7;">
+      1. Click the <strong style="color:#a855f7">shield icon</strong> on any text field<br>
+      2. Pick a persona from the dropdown<br>
+      3. Watch your text transform in real-time<br>
+      4. Create custom personas for your needs
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-text">Guardians of the Prompt v1.0.0</div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

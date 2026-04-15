@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@theme {
+  --color-space-deep: #070412;
+  --color-space-surface: #0D0A1F;
+  --color-cosmic-purple: #6C2BFF;
+  --color-cosmic-violet: #B388FF;
+  --color-neon-pink: #FF4FD8;
+  --color-neon-blue: #37C8FF;
+  --color-text-primary: #F5F1FF;
+  --color-text-muted: #C9BEEA;
+
+  --animate-drift-slow: drift 20s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 4s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-20px, 10px) scale(1.05); }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.6; filter: blur(10px) brightness(1); }
+    50% { opacity: 1; filter: blur(15px) brightness(1.2); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+:root {
+  --foreground-rgb: 245, 241, 255;
+  --background-start-rgb: 7, 4, 18;
+  --background-end-rgb: 13, 10, 31;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+@utility glass-panel {
+  @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+}
+
+@utility glass-panel-glow {
+  @apply bg-white/5 backdrop-blur-lg border border-white/20 rounded-3xl shadow-[0_0_30px_rgba(108,43,255,0.2)];
+}
+
+@utility neon-text-pink {
+  text-shadow: 0 0 10px rgba(255, 79, 216, 0.5), 0 0 20px rgba(255, 79, 216, 0.2);
+}
+
+@utility neon-text-blue {
+  text-shadow: 0 0 10px rgba(55, 200, 255, 0.5), 0 0 20px rgba(55, 200, 255, 0.2);
+}
+
+@utility glow-button-pink {
+  @apply relative overflow-hidden bg-neon-pink text-white font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,79,216,0.6)] active:scale-95;
+}
+
+@utility glow-button-blue {
+  @apply relative overflow-hidden bg-neon-blue text-space-deep font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(55,200,255,0.6)] active:scale-95;
+}
+
+@utility cosmic-card {
+  @apply relative p-6 glass-panel transition-all duration-500 hover:bg-white/10 hover:-translate-y-2;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070412;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1A1033;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6C2BFF;
+}
+
+/* Hide focus rings but maintain accessibility */
+:focus-visible {
+  @apply outline-none ring-2 ring-cosmic-purple;
+}
+
+/* Per-character smoke materialization */
+.char-smoke {
+  display: inline-block;
+  animation: charSmokeIn 0.4s ease-out forwards;
+}
+
+@keyframes charSmokeIn {
+  0% {
+    filter: blur(8px);
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  60% {
+    filter: blur(2px);
+    opacity: 0.7;
+    transform: translateY(1px);
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Chat-specific custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(108, 43, 255, 0.3);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(108, 43, 255, 0.6);
+}

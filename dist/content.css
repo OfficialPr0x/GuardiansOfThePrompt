@@ -1,0 +1,547 @@
+/* ============================================
+   Guardians of the Prompt - Content Styles
+   ============================================ */
+
+/* Shield Logo Button */
+.gotp-shield {
+  position: fixed;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  z-index: 2147483640;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  opacity: 0.6;
+  pointer-events: auto;
+  background: linear-gradient(135deg, #6C5CE7, #a855f7);
+  box-shadow: 0 2px 8px rgba(108, 92, 231, 0.3);
+}
+
+.gotp-shield:hover {
+  transform: scale(1.15);
+  opacity: 1;
+  box-shadow: 0 4px 16px rgba(108, 92, 231, 0.5);
+}
+
+.gotp-shield svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Dropdown Menu */
+.gotp-dropdown {
+  position: absolute;
+  z-index: 2147483641;
+  min-width: 280px;
+  max-width: 340px;
+  background: #1a1a2e;
+  border: 1px solid rgba(108, 92, 231, 0.3);
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(108, 92, 231, 0.1);
+  padding: 6px;
+  display: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  animation: gotp-slideIn 0.2s ease;
+  max-height: 460px;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.gotp-dropdown.gotp-visible {
+  display: flex;
+}
+
+@keyframes gotp-slideIn {
+  from { opacity: 0; transform: translateY(-8px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Dropdown Header */
+.gotp-dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 4px;
+  flex-shrink: 0;
+}
+
+.gotp-dropdown-header svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.gotp-dropdown-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #e2e0ff;
+  letter-spacing: 0.3px;
+}
+
+.gotp-dropdown-subtitle {
+  font-size: 10px;
+  color: #7c7c9a;
+  font-weight: 500;
+}
+
+/* Search */
+.gotp-search-wrap {
+  padding: 4px 8px;
+  flex-shrink: 0;
+}
+
+.gotp-search {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid rgba(108, 92, 231, 0.2);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  color: #e2e0ff;
+  font-size: 12px;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.gotp-search:focus {
+  border-color: rgba(108, 92, 231, 0.5);
+  background: rgba(255,255,255,0.06);
+}
+
+.gotp-search::placeholder {
+  color: #5a5a7a;
+}
+
+/* Persona List */
+.gotp-persona-list {
+  overflow-y: auto;
+  flex: 1;
+  padding: 2px 4px;
+  max-height: 300px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(108,92,231,0.3) transparent;
+}
+
+.gotp-persona-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.gotp-persona-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.gotp-persona-list::-webkit-scrollbar-thumb {
+  background: rgba(108,92,231,0.3);
+  border-radius: 4px;
+}
+
+/* Persona Item */
+.gotp-persona {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  position: relative;
+}
+
+.gotp-persona:hover {
+  background: rgba(108, 92, 231, 0.12);
+}
+
+.gotp-persona:active {
+  background: rgba(108, 92, 231, 0.2);
+}
+
+.gotp-persona-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+  background: rgba(108, 92, 231, 0.15);
+}
+
+.gotp-persona-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.gotp-persona-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e0ff;
+  margin-bottom: 2px;
+}
+
+.gotp-persona-desc {
+  font-size: 11px;
+  color: #7c7c9a;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Persona actions (edit/delete for custom) */
+.gotp-persona-actions {
+  display: none;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.gotp-persona:hover .gotp-persona-actions {
+  display: flex;
+}
+
+.gotp-persona-action-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7c7c9a;
+  font-size: 12px;
+  transition: all 0.15s;
+}
+
+.gotp-persona-action-btn:hover {
+  background: rgba(255,255,255,0.12);
+  color: #e2e0ff;
+}
+
+.gotp-persona-action-btn.gotp-delete:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+/* Divider */
+.gotp-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+  margin: 4px 8px;
+}
+
+/* Add Persona Button */
+.gotp-add-persona {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  margin: 2px 4px 4px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+  flex-shrink: 0;
+  color: #a855f7;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.gotp-add-persona:hover {
+  background: rgba(168, 85, 247, 0.1);
+}
+
+.gotp-add-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  background: rgba(168, 85, 247, 0.12);
+  border: 1.5px dashed rgba(168, 85, 247, 0.3);
+}
+
+/* ============================================
+   Modal Overlay
+   ============================================ */
+.gotp-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  z-index: 2147483645;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  animation: gotp-fadeIn 0.2s ease;
+}
+
+.gotp-modal-overlay.gotp-visible {
+  display: flex;
+}
+
+@keyframes gotp-fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.gotp-modal {
+  background: #1a1a2e;
+  border: 1px solid rgba(108, 92, 231, 0.2);
+  border-radius: 18px;
+  padding: 28px;
+  width: 440px;
+  max-width: 90vw;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  animation: gotp-modalSlide 0.25s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@keyframes gotp-modalSlide {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.gotp-modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #e2e0ff;
+  margin-bottom: 4px;
+}
+
+.gotp-modal-desc {
+  font-size: 13px;
+  color: #7c7c9a;
+  margin-bottom: 20px;
+}
+
+.gotp-form-group {
+  margin-bottom: 16px;
+}
+
+.gotp-form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #a0a0c0;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.gotp-form-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid rgba(108, 92, 231, 0.2);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  color: #e2e0ff;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.gotp-form-input:focus {
+  border-color: rgba(108, 92, 231, 0.5);
+}
+
+.gotp-form-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid rgba(108, 92, 231, 0.2);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  color: #e2e0ff;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+.gotp-form-textarea:focus {
+  border-color: rgba(108, 92, 231, 0.5);
+}
+
+.gotp-emoji-picker {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.gotp-emoji-option {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background: rgba(255,255,255,0.04);
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.gotp-emoji-option:hover {
+  background: rgba(108, 92, 231, 0.15);
+}
+
+.gotp-emoji-option.gotp-selected {
+  border-color: #a855f7;
+  background: rgba(168, 85, 247, 0.15);
+}
+
+.gotp-modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.gotp-btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+}
+
+.gotp-btn-cancel {
+  background: rgba(255,255,255,0.06);
+  color: #a0a0c0;
+}
+
+.gotp-btn-cancel:hover {
+  background: rgba(255,255,255,0.1);
+  color: #e2e0ff;
+}
+
+.gotp-btn-primary {
+  background: linear-gradient(135deg, #6C5CE7, #a855f7);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+}
+
+.gotp-btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(108, 92, 231, 0.5);
+  transform: translateY(-1px);
+}
+
+.gotp-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ============================================
+   Streaming Indicator
+   ============================================ */
+.gotp-streaming-indicator {
+  position: absolute;
+  z-index: 2147483642;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, #6C5CE7, #a855f7);
+  border-radius: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(108, 92, 231, 0.4);
+  pointer-events: auto;
+  cursor: pointer;
+  animation: gotp-pulse 2s ease-in-out infinite;
+}
+
+@keyframes gotp-pulse {
+  0%, 100% { box-shadow: 0 4px 16px rgba(108, 92, 231, 0.4); }
+  50% { box-shadow: 0 4px 24px rgba(108, 92, 231, 0.7); }
+}
+
+.gotp-streaming-dot {
+  width: 6px;
+  height: 6px;
+  background: #fbbf24;
+  border-radius: 50%;
+  animation: gotp-blink 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes gotp-blink {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+.gotp-streaming-stop {
+  margin-left: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gotp-streaming-stop:hover {
+  background: rgba(239, 68, 68, 0.6);
+}
+
+.gotp-streaming-stop-icon {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 1px;
+}
+
+/* ============================================
+   Toast Notification
+   ============================================ */
+.gotp-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 2147483647;
+  background: #1a1a2e;
+  border: 1px solid rgba(108, 92, 231, 0.3);
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  color: #e2e0ff;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  animation: gotp-toastIn 0.3s ease;
+  max-width: 320px;
+}
+
+.gotp-toast.gotp-toast-error {
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+@keyframes gotp-toastIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gotp-toastOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(12px); }
+}
